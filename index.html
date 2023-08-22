@@ -1,79 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>My Weather</title>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- Our CSS -->
+ <link rel="stylesheet" type="text/css" href="style.css">
+
+<title>Weather App</title>
 </head>
-
 <body>
-    <h1 class="make-center">Past Weather</h1>
-    <h2 class="make-center">Choose Your City</h2>
-    <h2 class="make-center">Choose Your Date</h2>
-  <div id="plot"></div>
 
-  <select class="make-center" id="selDataset">
-    <option value="dataset1">Chicago, IL</option>
-    <option value="dataset2">Kenton, TX</option>
-    <option value="dataset3">San Antonio, TX</option>
-  </select>
-
-  <pre id="api-data"></pre>
-  <!--Ask for the date in the past -->
-
-  <button onclick="fetchApiData()">Search!</button>
-  <div class="card">
-    <div class="search">
-        <input type="text" placeholder="Search for a city"
-        spellcheck="false">
-        <button><img src="images/clouds.svg"></button>
+  <div id="container">
+    <h1>Weather </h1>
+    <div>
+      <label for="citySelect">Select a city: </label>
+      <select id="citySelect">
+        <option value="41.8781,-87.623177">Chicago, IL</option>
+        <option value="33.2148,-97.1330">Denton, TX</option>
+        <option value="29.424349,-98.491142">San Antonio, TX</option>
+      </select>
     </div>
-    <div class="weather">
-        <img src="images/clouds.svg" class="weather-icon">
-        <h1 class="temp">22 C</h1>
-        <h2 class="city">New York</h2>
-        <div class="details">
-            <div class="col">
-                <img src="images/clouds.svg">
-                <div>
-                    <p class="humidity">
-                        50%
-                    </p>
-                    <p>Humidity</p>
-                </div>
-            </div>
-            <div class="col">
-                <img src="images/clouds.svg">
-                <div>
-                    <p class="wind">
-                        15 km/h
-                    </p>
-                    <p>Wind Speed</p>
-                </div>
-            </div>
-        </div>
+<br>
+  <div class="table">
+    <div class="table-section">
+      <div class="table-cell"><div id="view1"></div>View 1</div>
+      <div class="table-cell"><div id="view2"></div>View 2</div>
+    </div>
+    <div class="table-section">
+      <div class="table-cell"><div id="view3"></div>View 3</div>
+      <div class="table-cell"><div id="weatherData"></div></div>
     </div>
   </div>
 
-  <script src="plots.js"></script>
-  <script>
-    async function fetchApiData() {
-        try {
-            const myOptions = document.getElementById('selDataset').value;
-            const response = await fetch('/get_api_data?myOptions=${myOptions}');
-            const data = await response.json();
-            const apiDataDiv = document.getElementById('api-data');
-            apiDataDiv.innerHTML = JSON.stringify(data, null, 2);
-        }catch(error) {
-            console.error(error);
-        }
-    }
-  </script>
+  <script type="text/javascript" src="pastWeather.js"></script>
 </body>
-
 </html>
