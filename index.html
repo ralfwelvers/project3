@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Weather</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="make-center">Past Weather</h1>
+    <h2 class="make-center">Choose Your City</h2>
+    <h2 class="make-center">Choose Your Date</h2>
+  <div id="plot"></div>
+
+  <select class="make-center" id="selDataset">
+    <option value="dataset1">Chicago, IL</option>
+    <option value="dataset2">Kenton, TX</option>
+    <option value="dataset3">San Antonio, TX</option>
+  </select>
+
+  <pre id="api-data"></pre>
+  <!--Ask for the date in the past -->
+
+  <button onclick="fetchApiData()">Search!</button>
+  <div class="card">
+    <div class="search">
+        <input type="text" placeholder="Search for a city"
+        spellcheck="false">
+        <button><img src="images/clouds.svg"></button>
+    </div>
+    <div class="weather">
+        <img src="images/clouds.svg" class="weather-icon">
+        <h1 class="temp">22 C</h1>
+        <h2 class="city">New York</h2>
+        <div class="details">
+            <div class="col">
+                <img src="images/clouds.svg">
+                <div>
+                    <p class="humidity">
+                        50%
+                    </p>
+                    <p>Humidity</p>
+                </div>
+            </div>
+            <div class="col">
+                <img src="images/clouds.svg">
+                <div>
+                    <p class="wind">
+                        15 km/h
+                    </p>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <script src="plots.js"></script>
+  <script>
+    async function fetchApiData() {
+        try {
+            const myOptions = document.getElementById('selDataset').value;
+            const response = await fetch('/get_api_data?myOptions=${myOptions}');
+            const data = await response.json();
+            const apiDataDiv = document.getElementById('api-data');
+            apiDataDiv.innerHTML = JSON.stringify(data, null, 2);
+        }catch(error) {
+            console.error(error);
+        }
+    }
+  </script>
+</body>
+
+</html>
