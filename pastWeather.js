@@ -18,7 +18,7 @@ if (selectedCity == "Chicago, IL"){
   lon = -98.4936;
 }
 
-const start_date = "2020-01-01";
+const start_date = "2020-06-24";
 const end_date = "2020-06-30";
 //////////////////////https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2023-08-04&end_date=2023-08-18&daily=temperature_2m_mean&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago
 
@@ -40,14 +40,24 @@ function createFeatures(earthquakeData) {
   console.log(frame);
   let counter = 0;
   const weatherDataDiv = document.getElementById('weatherData');
+  const weatherCardContainer = document.createElement('div');
+  weatherCardContainer.classList.add('weather-card-container');
 
   for(var i = 0; i < frame; i++){
   let date = earthquakeData.daily.time[i];
   let temp = earthquakeData.daily.temperature_2m_mean[i];
   const weatherEntry = `
-  <p>Date: ${date} CST</p>
-  <p>Temp: ${temp} ${metric}</p>`;
-
-  weatherDataDiv.innerHTML += weatherEntry;
+  <div class="weather-card">
+    <div class="weather-card-header">
+      <p>Date: ${date} CST</p>
+    </div>
+    <div class="weather-card-content">
+      <p>Temperature: ${temp} F</p>
+    </div>
+  </div>`;
+  const weatherCard = document.createElement('div');
+  weatherCard.innerHTML = weatherEntry;
+  weatherCardContainer.appendChild(weatherCard);
   }
+  weatherDataDiv.appendChild(weatherCardContainer);
 };
