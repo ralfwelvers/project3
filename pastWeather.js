@@ -31,6 +31,39 @@ const maxDate = today.toISOString().split('T')[0];
 startDateInput.max = maxDate;
 endDateInput.max = maxDate;
 
+const lineChart = new Chart(document.getElementById('lineChart').getContext('2d'), {
+  type:'line',
+  data:{
+    labels: [],
+    datasets: [{
+      label: 'Temperature Trend',
+      data: [],
+      borderColor:'blue',
+      fill: false,
+  }]
+},
+options:{
+  responsive: true,
+  scales: {
+    x: { 
+      type: 'time',
+      time: {
+              unit:'day'
+            },
+            title: {
+              display: 'true',
+              text: 'Date'
+            }
+          },
+          y:{
+            title:{
+              display: 'true',
+              text: 'Temperature (F)'
+            }
+          }
+        }
+      }
+});
 submitButton.addEventListener('click', function() {
   let startDate = startDateInput.value;
   let endDate = endDateInput.value;
@@ -56,6 +89,16 @@ function createFeatures(earthquakeData) {
   const weatherDataDiv = document.getElementById('weatherData');
   const weatherCardContainer = document.createElement('div');
   weatherCardContainer.classList.add('weather-card-container');
+  const data = [];
+  for (let i = 0; i < frame; i++){
+    let date = earthquakeData.daily.time[i];
+    let temp = earthquakeData.daily.temperature_2m_mean[i];
+    data.push({x:date, y:temp});
+  }
+
+  lineChart.data.labels = frame;
+  lineChart.data.datasets[0].data = data;
+  lineChart.update();
 
   for(var i = 0; i < frame; i++){
   let date = earthquakeData.daily.time[i];
