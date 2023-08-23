@@ -6,6 +6,7 @@ const baseUrl = "https://archive-api.open-meteo.com/v1/archive";
 const citySelect = document.getElementById('citySelect');
 const selectedCity = citySelect.value;
 let lat, lon; 
+let metric;
 
 if (selectedCity == "Chicago, IL"){
   lat = 41.875;
@@ -20,17 +21,24 @@ if (selectedCity == "Chicago, IL"){
 
 const start_date = "2020-06-24";
 const end_date = "2020-06-30";
-//////////////////////https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2023-08-04&end_date=2023-08-18&daily=temperature_2m_mean&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago
 
-const pastWeatherUrl = `${baseUrl}?latitude=${selectedCity.split(',')[0]}&longitude=${selectedCity.split(',')[1]}&start_date=${start_date}&end_date=${end_date}&daily=temperature_2m_mean&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago`;
-console.log(pastWeatherUrl);
-
-let metric; 
-
-d3.json(pastWeatherUrl).then(function(earthquakeData) {
-  metric = earthquakeData.daily_units.temperature_2m_mean;
-  createFeatures(earthquakeData);
+const startDateInput = document.getElementById('startDate');
+const endDateInput = document.getElementById('endDate');
+const submitButton = document.getElementById('submit');
+submitButton.addEventListener('click', function() {
+  let startDate = startDateInput.value;
+  let endDate = endDateInput.value;
+  console.log("Start Date:" + startDate);
+  console.log("End Date: " + endDate);
+  const pastWeatherUrl = `${baseUrl}?latitude=${selectedCity.split(',')[0]}&longitude=${selectedCity.split(',')[1]}&start_date=${startDate}&end_date=${endDate}&daily=temperature_2m_mean&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago`;
+  console.log(pastWeatherUrl);
+  d3.json(pastWeatherUrl).then(function(earthquakeData) {
+    metric = earthquakeData.daily_units.temperature_2m_mean;
+    createFeatures(earthquakeData);
+  });
 });
+//////////////////////https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2023-08-04&end_date=2023-08-18&daily=temperature_2m_mean&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago
+ 
 
 const weatherDataDiv = document.getElementById('weatherData');
 weatherDataDiv.innerHTML = "";
