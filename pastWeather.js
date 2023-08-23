@@ -44,8 +44,10 @@ function createFeatures(earthquakeData) {
   for(var i = 0; i < frame; i++){
   let date = earthquakeData.daily.time[i];
   let temp = earthquakeData.daily.temperature_2m_mean[i];
-  weatherDataDiv.innerHTML = `
+  const weatherEntry = `
   <p>Date: ${date} CST</p>
   <p>Temp: ${temp} ${metric}</p>`;
+
+  weatherDataDiv.innerHTML += weatherEntry;
   }
 };
