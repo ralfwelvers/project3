@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City Information</title>
+</head>
+<body>
+    <h1>City Information</h1>
+    
+    <!-- Dropdown Select Element -->
+    <label for="cityDropdown">Select a City:</label>
+    <select id="cityDropdown"></select>
+
+    <script>
+        function fetchCityData() {
+            fetch('http://127.0.0.1:5000/api/cities')
+                .then(response => response.json())
+                .then(data => {
+                    displayCityDropdown(data);
+                    displayCityData(data);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        function displayCityDropdown(cities) {
+            const cityDropdown = document.getElementById('cityDropdown');
+
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = `${city.latitude},${city.longitude}`;
+                option.textContent = city.city_name;
+                cityDropdown.appendChild(option);
+            });
+        }
+
+        function displayCityData(cities) {
+            const cityListDiv = document.getElementById('cityList');
+
+            cities.forEach(city => {
+                const cityInfo = document.createElement('div');
+                cityInfo.innerHTML = `
+                    <p><strong>City Name:</strong> ${city.city_name}</p>
+                    <p><strong>Latitude:</strong> ${city.latitude}</p>
+                    <p><strong>Longitude:</strong> ${city.longitude}</p>
+                    <hr>
+                `;
+                cityListDiv.appendChild(cityInfo);
+            });
+        }
+
+        window.onload = fetchCityData;
+    </script>
+</body>
+</html>
