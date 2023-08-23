@@ -25,6 +25,12 @@ const end_date = "2020-06-30";
 const startDateInput = document.getElementById('startDate');
 const endDateInput = document.getElementById('endDate');
 const submitButton = document.getElementById('submit');
+const today = new Date();
+today.setDate(today.getDate() - 8);
+const maxDate = today.toISOString().split('T')[0];
+startDateInput.max = maxDate;
+endDateInput.max = maxDate;
+
 submitButton.addEventListener('click', function() {
   let startDate = startDateInput.value;
   let endDate = endDateInput.value;
