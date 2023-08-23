@@ -25,31 +25,29 @@ const end_date = "2020-06-30";
 const pastWeatherUrl = `${baseUrl}?latitude=${selectedCity.split(',')[0]}&longitude=${selectedCity.split(',')[1]}&start_date=${start_date}&end_date=${end_date}&daily=temperature_2m_mean&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago`;
 console.log(pastWeatherUrl);
 
+let metric; 
 
 d3.json(pastWeatherUrl).then(function(earthquakeData) {
+  metric = earthquakeData.daily_units.temperature_2m_mean;
   createFeatures(earthquakeData);
 });
 
+const weatherDataDiv = document.getElementById('weatherData');
+weatherDataDiv.innerHTML = "";
 function createFeatures(earthquakeData) {
   let time = earthquakeData.daily.temperature_2m_mean;
   let frame = time.length; 
   console.log(frame);
   let counter = 0;
+  const weatherDataDiv = document.getElementById('weatherData');
+
   for(var i = 0; i < frame; i++){
   let date = earthquakeData.daily.time[i];
   let temp = earthquakeData.daily.temperature_2m_mean[i];
-  console.log(date + ":" +  temp);
-  counter++;
+  const weatherEntry = `
+  <p>Date: ${date} CST</p>
+  <p>Temp: ${temp} ${metric}</p>`;
 
+  weatherDataDiv.innerHTML += weatherEntry;
   }
-  console.log(counter);
-
-  const weatherDataDiv = document.getElementById('weatherData');
-  weatherDataDiv.innerHTML = `
-    <p>Date: ${date} CST</p>
-    <p>Temp: ${temp} F CST</p>
-  `;
-
-  let metric = earthquakeData.daily_units.temperature_2m_mean;
-
 };
