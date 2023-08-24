@@ -17,15 +17,16 @@ def get_cities():
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute('SELECT city_name, longitude, latitude FROM cities')
+        cursor.execute('SELECT city_name, latitude, longitude FROM cities')
         cities = cursor.fetchall()
 
         city_list = []
         for city in cities:
             city_list.append({
                 'city_name': city['city_name'],
-                'longitude': city['longitude'],
-                'latitude': city['latitude']
+                'latitude': city['latitude'],
+                'longitude': city['longitude']
+                
             })
 
         conn.close()
