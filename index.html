@@ -19,6 +19,12 @@
         <option value="33.21,-97.13">Denton, TX</option>
         <option value="29.42,-98.49">San Antonio, TX</option>
       </select>
+      <label for="startDate">Start Date: </label>
+      <input type="date" id="startDate" max="" min="1940-01-01">
+
+      <label for="endDate">End Date: </label>
+      <input type="date" id="endDate" max="" min="1940-01-01">
+      <button id="submit">Submit</button>
     </div>
 <br>
   <div class="table">
@@ -31,8 +37,12 @@
       <div class="table-cell"><div id="weatherData"></div></div>
     </div>
   </div>
+  <div id="lineChartContainer">
+    <canvas id="lineChart"></canvas>
+  </div>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script type="text/javascript" src="pastWeather.js"></script>
 </body>
 </html>

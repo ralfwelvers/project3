@@ -1,3 +1,8 @@
+.weather-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .card{
     width: 90%;
     max-width: 470px;
@@ -74,3 +79,22 @@
 .make-center{
     text-align: center;
 }
+.weather-card{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    max-width: 300px;
+}
+.weather-card-header{
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    text-align: center;
+}
+.weather-card-content{
+    padding:10px;
+    text-align: center;
+}
+
