@@ -8,8 +8,8 @@
 ## Topic: Weather Information	
 
 ## Datasets:
-* OpenWeather api: https://openweathermap.org/
-* Open Mateo api: https://open-meteo.com/
+* OpenWeather API: https://openweathermap.org/
+* OpenMeteo API: https://open-meteo.com/
 
 ## Premise:
 * Create a weather info dashboard
