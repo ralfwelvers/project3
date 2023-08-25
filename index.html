@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <!-- Our CSS -->
  <link rel="stylesheet" type="text/css" href="style.css">
-
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css">
 <title>Weather App</title>
 </head>
 <body>
@@ -37,13 +37,11 @@
       <div class="table-cell"><div id="weatherData"></div></div>
     </div>
   </div>
-  <div id="lineChartContainer">
-    <canvas id="lineChart"></canvas>
-  </div>
-  <div id="chartContainer"></div>
+  <div id="chartContainer" class="chart-container"></div>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
   <script type="text/javascript" src="pastWeather.js"></script>
 </body>
 </html>

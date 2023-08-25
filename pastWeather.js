@@ -1,8 +1,6 @@
 
 const baseUrl = "https://archive-api.open-meteo.com/v1/archive";
-//https://archive-api.open-meteo.com/v1/archive?latitude=52.5211&longitude=13.41111&start_date=2023-08-03&end_date=2023-08-17&hourly=temperature_2m&temperature_unit=fahrenheit&timezone=America%2FChicago
-//https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2023-08-03&end_date=2023-08-17&hourly=temperature_2m&temperature_unit=fahrenheit&timezone=America%2FChicago
-//https://archive-api.open-meteo.com/v1/archive?latitude=41.87&longitude=-87.623177&start_date=2020-01-01&end_date=2020-06-30&hourly=temperature_2m&temperature_unit=fahrenheit&timezone=America%2FChicago
+
 const citySelect = document.getElementById('citySelect');
 const selectedCity = citySelect.value;
 let lat, lon; 
@@ -19,8 +17,6 @@ if (selectedCity == "Chicago, IL"){
   lon = -98.4936;
 }
 
-const start_date = "2020-06-24";
-const end_date = "2020-06-30";
 
 const startDateInput = document.getElementById('startDate');
 const endDateInput = document.getElementById('endDate');
@@ -43,7 +39,6 @@ submitButton.addEventListener('click', function() {
     createFeatures(earthquakeData);
   });
 });
-//////////////////////https://archive-api.open-meteo.com/v1/archive?latitude=52.52&longitude=13.41&start_date=2023-08-04&end_date=2023-08-18&daily=temperature_2m_mean&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago
  
 const weatherDataDiv = document.getElementById('weatherData');
 weatherDataDiv.innerHTML = "";
@@ -54,66 +49,52 @@ function createFeatures(earthquakeData) {
   const weatherDataDiv = document.getElementById('weatherData');
   const weatherCardContainer = document.createElement('div');
   weatherCardContainer.classList.add('weather-card-container');
-  const data = [];
-  for (let i = 0; i < frame; i++){
-    let date = new Date(earthquakeData.daily.time[i] * 1000);
-    let temp = earthquakeData.daily.temperature_2m_mean[i];
-    data.push({x:date, y:temp});
-  }
 
-  const canvas = document.createElement('canvas');
-  canvas.width = 1000;
-  canvas.height = 500;
-  const chartContainer = document.getElementById('chartContainer');
-  chartContainer.appendChild(canvas);
-  const ctx = canvas.getContext('2d');
-  new Chart(ctx, {
-    type:'line',
-    data: {
-      datasets: [{
-        label: 'Temperature',
-        data: data,
-        borderColor: 'blue',
-        fill: false,
-      }],
-    },
-    options: {
-      scales: {
-        x:{
-          type: 'time',
-          time: {
-            unit: 'day'
-          },
-          title:{
-            display: true,
-            text: 'Date',
-          },
-        },
-        y: {
-          title: {
-            display: true,
-            text: 'Temperature',
-          },
-        },
-      },
-    },
-  });
 
-  for(var i = 0; i < frame; i++){
+const chartData = {
+  labels: [],
+  series: [[]]
+};
+for (let i = 0; i < frame; i++){
   let date = earthquakeData.daily.time[i];
   let temp = earthquakeData.daily.temperature_2m_mean[i];
-  const weatherEntry = `
-  <div class="weather-card">
-    <div class="weather-card-header">
-      <p>Date: ${date} CST</p>
-    </div>
-    <div class="weather-card-content">
-      <p>Temperature: ${temp} F</p>
-    </div>
-  </div>`;
-  const weatherCard = document.createElement('div');
-  weatherCard.innerHTML = weatherEntry;
-  weatherCardContainer.appendChild(weatherCard);
+  let formattedDate = '${date.getMonth()+1}/${date.getDate()}';
+  chartData.labels.push(date);
+  chartData.series[0].push(temp);
+}
+
+const chartOptions = {
+  fullWidth: true, 
+  chartPadding: {
+    right: 40
+  },
+  axisX: {
+    labelInterpolationFnc: function(value, index) {
+      return index % 2 === 0? value : null;
+    }
+  },
+  axisY: {
+    onlyIntegers: true
   }
+}
+
+new Chartist.Line('#chartContainer', chartData, chartOptions);
+
+  // for(var i = 0; i < frame; i++){
+  // let date = earthquakeData.daily.time[i];
+  // let temp = earthquakeData.daily.temperature_2m_mean[i];
+  // const weatherEntry = `
+  // <div class="weather-card">
+  //   <div class="weather-card-header">
+  //     <p>Date: ${date} CST</p>
+  //   </div>
+  //   <div class="weather-card-content">
+  //     <p>Temperature: ${temp} F</p>
+  //   </div>
+  // </div>`;
+  // const weatherCard = document.createElement('div');
+  // weatherCard.innerHTML = weatherEntry;
+  // weatherCardContainer.appendChild(weatherCard);
+  // }
   weatherDataDiv.appendChild(weatherCardContainer);
 };
