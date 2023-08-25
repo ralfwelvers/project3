@@ -23,6 +23,12 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=50a4b6e
       +".png";
   }
   //------------------------------------------------------------
+
+  //*TEST: Weather descriptions
+  for(i = 0; i<5; i++){
+    document.getElementById("desc" + (i+1)).innerHTML =
+    (data.list[i].weather[0].description).toUpperCase();
+  }
   console.log(data)
 
 

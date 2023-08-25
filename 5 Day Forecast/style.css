@@ -1,7 +1,7 @@
 *{
   color: rgb(7, 1, 1);
-  background: rgb(175, 238, 238);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(173, 216, 230);
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif, sans-serif;
 }
 
 #cityInput, #cityName, #inputContainer,button{
@@ -35,7 +35,7 @@ font-weight:bold;
 .icons{
   display: inline-bock;
   float: left;
-  height: 200px;
+  height: 250px;
   width: 190px;
   margin: 20px;
   border: 5px solid rgb(48, 47, 47);
@@ -58,6 +58,14 @@ font-weight:bold;
   text-align: center;
   font-weight: bold;
 }
+
+.weatherDescription{
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
 
 .minValues{
   text-align: center;
@@ -123,3 +131,4 @@ font-weight:bold;
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
