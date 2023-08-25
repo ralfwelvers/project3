@@ -1,6 +1,5 @@
 # Project 3
-## Group Team: Error Slayers
-## Team members:
+## Team Error Slayers
 * Jiahui Yang
 * Saber Garibi
 * Rajan Patel
