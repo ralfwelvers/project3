@@ -1,11 +1,10 @@
-Project 3
-Group Team: Error Slayers
-
-Team members:
-Jiahui Yang
-Saber Garibi
-Rajan Patel
-Ralf Welvers
+# Project 3
+## Group Team: Error Slayers
+## Team members:
+* Jiahui Yang
+* Saber Garibi
+* Rajan Patel
+* Ralf Welvers
 
 Topic: Weather Information	
 
