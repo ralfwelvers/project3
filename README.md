@@ -18,4 +18,4 @@
   - Current Weather - Jiahui: https://openweathermap.org/current
   - Forecasted Weather - Rajan: https://open-meteo.com/
   - Past Weather - Saber: https://open-meteo.com/
-  - Sunrise, sunset, current air quality - Ralf: https://openweathermap.org/
+  - Sunrise, Sunset, Current Air Quality - Ralf: https://openweathermap.org/
