@@ -51,16 +51,51 @@ function createFeatures(earthquakeData) {
   let time = earthquakeData.daily.temperature_2m_mean;
   let frame = time.length; 
   console.log(frame);
-  let counter = 0;
   const weatherDataDiv = document.getElementById('weatherData');
   const weatherCardContainer = document.createElement('div');
   weatherCardContainer.classList.add('weather-card-container');
   const data = [];
   for (let i = 0; i < frame; i++){
-    let date = earthquakeData.daily.time[i];
+    let date = new Date(earthquakeData.daily.time[i] * 1000);
     let temp = earthquakeData.daily.temperature_2m_mean[i];
     data.push({x:date, y:temp});
   }
+
+  const canvas = document.createElement('canvas');
+  canvas.width = 1000;
+  canvas.height = 500;
+  const ctx = canvas.getContext('2d');
+  new Chart(ctx, {
+    type:'line',
+    data: {
+      datasets: [{
+        label: 'Temperature',
+        data: data,
+        borderColor: 'blue',
+        fill: false,
+      }],
+    },
+    options: {
+      scales: {
+        x:{
+          type: 'time',
+          time: {
+            unit: 'day'
+          },
+          title:{
+            display: true,
+            text: 'Date',
+          },
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Temperature',
+          },
+        },
+      },
+    },
+  });
 
   for(var i = 0; i < frame; i++){
   let date = earthquakeData.daily.time[i];
