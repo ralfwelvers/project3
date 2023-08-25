@@ -15,11 +15,7 @@
 * Create a weather info dashboard
 * Have a dropdown for specific cities
 * Weather views will be shown:
-  - Current Weather - Jiahui
-    Temperature, wind speed, humidity, etc.
-    (https://openweathermap.org/current)
-  - Forecasted Weather - Rajan
-    (https://open-meteo.com/)
-  - Past Weather - Saber
-    (https://open-meteo.com/)
-  - Sunrise, sunset, current air quality - Ralf (https://openweathermap.org/)
+  - Current Weather - Jiahui: https://openweathermap.org/current
+  - Forecasted Weather - Rajan: https://open-meteo.com/
+  - Past Weather - Saber: https://open-meteo.com/
+  - Sunrise, sunset, current air quality - Ralf: https://openweathermap.org/
