@@ -6,12 +6,12 @@
 * Rajan Patel
 * Ralf Welvers
 
-Topic: Weather Information	
+## Topic: Weather Information	
 
-Datasets:
-Openweather api
+## Datasets:
+* Openweather api
 https://openweathermap.org/
-Open Mateo api
+* Open Mateo api
 https://open-meteo.com/
 
 Premise:
