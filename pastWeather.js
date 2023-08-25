@@ -64,6 +64,8 @@ function createFeatures(earthquakeData) {
   const canvas = document.createElement('canvas');
   canvas.width = 1000;
   canvas.height = 500;
+  const chartContainer = document.getElementById('chartContainer');
+  chartContainer.appendChild(canvas);
   const ctx = canvas.getContext('2d');
   new Chart(ctx, {
     type:'line',
