@@ -17,28 +17,33 @@ if (selectedCity == "Chicago, IL"){
   lon = -98.4936;
 }
 
+//show last two weeks from todays date for the selected city
 
 const startDateInput = document.getElementById('startDate');
 const endDateInput = document.getElementById('endDate');
-const submitButton = document.getElementById('submit');
+//const submitButton = document.getElementById('submit');
 const today = new Date();
-today.setDate(today.getDate() - 8);
+const start_date = new Date();
+
+start_date.setDate(start_date.getDate() - 300);
+today.setDate(today.getDate() - 1);
 const maxDate = today.toISOString().split('T')[0];
 startDateInput.max = maxDate;
-endDateInput.max = maxDate;
-
-submitButton.addEventListener('click', function() {
-  let startDate = startDateInput.value;
-  let endDate = endDateInput.value;
+endDateInput.max = today.setDate(today.getDate() - 1);
+//https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/38.9697,-77.385?key=XVLF42ATVWX4DP9DKQT4DM9PW
+//https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/London,UK/2020-08-01/2020-08-25?key=XVLF42ATVWX4DP9DKQT4DM9PW
+let startDate = start_date.toISOString().split('T')[0];
+  let endDate = today.toISOString().split('T')[0];
   console.log("Start Date:" + startDate);
   console.log("End Date: " + endDate);
+  const pastWeatherUrl2 = https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/London,UK/2020-08-01/2020-08-25?key=XVLF42ATVWX4DP9DKQT4DM9PW
   const pastWeatherUrl = `${baseUrl}?latitude=${selectedCity.split(',')[0]}&longitude=${selectedCity.split(',')[1]}&start_date=${startDate}&end_date=${endDate}&daily=temperature_2m_mean&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago`;
   console.log(pastWeatherUrl);
   d3.json(pastWeatherUrl).then(function(earthquakeData) {
     metric = earthquakeData.daily_units.temperature_2m_mean;
     createFeatures(earthquakeData);
   });
-});
+
  
 const weatherDataDiv = document.getElementById('weatherData');
 weatherDataDiv.innerHTML = "";
