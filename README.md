@@ -48,3 +48,6 @@ cities-all.db: Contains the city data for the dropdown that contains over 30,000
 
 uscities.csv: contains the city data for the database that contains over 30,000 cities.
 
+font: this is a directory that contains fonts used by the current weather.
+
+icons: this is a directory that contains icons used by the current weather.
