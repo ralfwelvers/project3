@@ -1,0 +1,76 @@
+.table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table-section {
+    display: table-row;
+  }
+
+  .table-cell {
+    display: table-cell;
+    border: 1px solid #000;
+    padding: 10px;
+  }
+
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh; 
+  }
+
+  #container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  p {
+    color: #555;
+    margin: 10px 0;
+  }
+
+  .aqi-description {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .aqi-good {
+    background-color: #00cc00; /* Green */
+  }
+
+  .aqi-moderate {
+    background-color: #ffc107; /* Yellow */
+  }
+
+  .aqi-unhealthy-sensitive {
+    background-color: #ff9800; /* Orange */
+  }
+
+  .aqi-unhealthy {
+    background-color: #f44336; /* Red */
+  }
+
+  .aqi-very-unhealthy {
+    background-color: #9c27b0; /* Purple */
+  }
+
+  .aqi-hazardous {
+    background-color: #800000; /* Maroon */
+  }

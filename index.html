@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- Our CSS -->
+  <link rel="stylesheet" href="font/Rimouski.css">
+  <link rel="stylesheet" href="view1-style.css">
+  <link rel="stylesheet" href="view2-style.css">
+  <link rel="stylesheet" href="view4-style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css">
+
+<title>Weather App</title>
+</head>
+<body>
+
+  <div id="container">
+    <h1>Weather </h1>
+    <div>
+      <label for="">Select a city: </label>
+      
+      <select id="citySelect">
+        <option value="">--</option>
+      </select>
+    </div>
+<br>
+
+  <!-- view 1 start-->
+
+  <div class="container">
+    <div class="app-title">
+        <p>Current Weather</p>
+    </div>
+    <div class="weather-container">
+        <div class="weather-icon">
+            <img src="icons/unknown.png" alt="">
+        </div>
+        <div class="location">
+            <p>-</p>
+        </div>
+        <div class="temperature-value">
+            <p>- °<span>F</span></p>
+        </div>
+        <div class="temperature-description">
+            <p> - </p>
+        </div>
+        <div class="temperature-windspeed">
+            <p> - </p>
+        </div>
+        <div class="temperature-humidity">
+            <p> - </p>
+        </div>
+  
+    <!-- view 1 end-->
+
+      <!-- view 4 start-->
+        
+      <div id="weatherData"></div>
+    </div>
+  </div>
+      <!-- view 4 end-->
+
+   <!-- view 2 start-->
+
+
+   
+  <div id = "weatherContainer">
+    <h1>Forecast for next 5 days:</h1>
+    <div id="iconsContainer">    
+        <div class = "icons">
+            <p class="weather" id="day1"></p>
+            <p class="weatherDescription" id="desc1"></p>
+            <div class="image"><img src="dots.png" class="imgClass" id="img1"></div>
+            <p class="minValues" id="day1Min"></p>
+            <p class="maxValues" id="day1Max"></p>
+        </div>
+        <div class = "icons">
+            <p class="weather" id="day2"></p>
+            <p class="weatherDescription" id="desc2"></p>
+            <div class="image"><img src="dots.png" class="imgClass" id="img2"></div>
+            <p class="minValues" id="day2Min"></p>
+            <p class="maxValues" id="day2Max"></p>
+        </div>
+        <div class = "icons">
+            <p class="weather" id="day3"></p>
+            <p class="weatherDescription" id="desc3"></p>
+            <div class="image"><img src="dots.png" class="imgClass" id="img3"></div>
+            <p class="minValues" id="day3Min"></p>
+            <p class="maxValues" id="day3Max"></p>
+        </div>
+        <div class = "icons">
+            <p class="weather" id="day4"></p>
+            <p class="weatherDescription" id="desc4"></p>
+            <div class="image"><img src="dots.png" class="imgClass" id="img4"></div>
+            <p class="minValues" id="day4Min"></p>
+            <p class="maxValues" id="day4Max"></p>
+        </div>
+        <div class = "icons">
+            <p class="weather" id="day5"></p>
+            <p class="weatherDescription" id="desc5"></p>
+            <div class="image"><img src="dots.png" class="imgClass" id="img5"></div>
+            <p class="minValues" id="day5Min"></p>
+            <p class="maxValues" id="day5Max"></p>
+
+    </div>
+</div>
+</div>
+ <!-- view 2 end-->
+
+<!-- view 3 start-->
+<div>
+    <h1>Past 2 weeks of temperature in fahrenheit:</h1>
+ <div id="chartContainer" class="chart-container"></div>
+</div>
+<!-- view 3 end-->
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
+
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="views.js"></script>
+
+
+</body>
+</html>
