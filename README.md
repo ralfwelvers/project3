@@ -14,6 +14,8 @@ Openweather api
 https://openweathermap.org/
 Open Mateo api
 https://open-meteo.com/
+Weatherbit api
+https://www.weatherbit.io/
 
 Premise:
 Create a weather info dashboard
@@ -25,5 +27,5 @@ Temperature, wind speed, humidity, etc.
 Forecasted Weather - Rajan
 (https://open-meteo.com/)
 Past Weather - Saber
-(https://open-meteo.com/)
+(https://www.weatherbit.io/)
 Sunrise, sunset, current air quality - Ralf (https://openweathermap.org/)
