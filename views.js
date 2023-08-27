@@ -1,6 +1,10 @@
 async function fetchData() {
     const citySelect = document.getElementById('citySelect');
     const selectedCity = citySelect.value;
+    
+    const dropdown = document.getElementById("citySelect");
+    const selectedOption = dropdown.options[dropdown.selectedIndex];
+    const selectedText = selectedOption.text;
 
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${selectedCity.split(',')[0]}&lon=${selectedCity.split(',')[1]}&exclude=hourly,daily&appid=6d370cba458bd25e754a65c035a16594`;
     
@@ -63,7 +67,7 @@ async function fetchData() {
 
       // Function to display weather information
       function displayWeather(){
-          locationElement.innerHTML = `${weather.city}`;
+          locationElement.innerHTML = selectedText //`${weather.city}`;
           iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
           tempElement.innerHTML = `${weather.temperature.value}°<span>F</span>`;
           descElement.innerHTML = weather.description;
@@ -167,7 +171,9 @@ async function fetchData() {
         console.log("End Date: " + endDate);
         let myCity = "Chicago,IL"
         //put api key in config file
-        const pastWeatherUrl2 = `https://api.weatherbit.io/v2.0/history/daily?key=f5ef981c4d594b8b8be7501dc7da2fde&lat=${selectedCity.split(',')[0]}&lon=${selectedCity.split(',')[1]}&start_date=${startDate}&end_date=${endDate}&units=I`;
+        //const pastWeatherUrl2 = `https://api.weatherbit.io/v2.0/history/daily?key=f5ef981c4d594b8b8be7501dc7da2fde&lat=${selectedCity.split(',')[0]}&lon=${selectedCity.split(',')[1]}&start_date=${startDate}&end_date=${endDate}&units=I`;
+      
+        const pastWeatherUrl2 = `https://api.weatherbit.io/v2.0/history/daily?key=3286231e75df45468e76c94c27409a48&lat=${selectedCity.split(',')[0]}&lon=${selectedCity.split(',')[1]}&start_date=${startDate}&end_date=${endDate}&units=I`;
       
         console.log(pastWeatherUrl2);
         d3.json(pastWeatherUrl2).then(function(earthquakeData) {
