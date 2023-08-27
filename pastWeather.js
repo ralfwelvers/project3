@@ -1,19 +1,6 @@
-const citySelect = document.getElementById('citySelect');
-const selectedCity = citySelect.value;
+let citySelect = document.getElementById('citySelect');
+let selectedCity = citySelect.value;
 let lat, lon; 
-
-if (selectedCity == "Chicago, IL"){
-  lat = 41.875;
-  lon = -87.625;
-}else if (selectedCity == "Denton, TX"){
-  lat = 40.7128;
-  lon = -74.0060;
-}else if (selectedCity == "San Antonio, TX"){
-  lat = 29.4242;
-  lon = -98.4936;
-}
-lat = 41.875;
-lon = -87.625;
 
 //copy paste line 19 to 32 allong with createFeatures function
 const today = new Date();
@@ -23,7 +10,7 @@ const start_date = new Date(today);
 const end_date = new Date(today);
 
 //A substraction by two brings yesterday's date
-end_date.setDate(today.getDate() - 2);
+end_date.setDate(today.getDate() - 1);
 
 // Set start_date to 14 days before yesterday's date
 start_date.setDate(end_date.getDate()-14);
@@ -33,19 +20,32 @@ let endDate = end_date.toISOString().split('T')[0];
 
 // console.log("Start Date: " + startDate);
 // console.log("End Date: " + endDate);
+console.log(selectedCity);
 
-
-//put api key in config file
-const pastWeatherUrl2 = `https://api.weatherbit.io/v2.0/history/daily?key=60a45320427d4321804f21050ab89b72&lat=${lat}&lon=${lon}&start_date=${startDate}&end_date=${endDate}&units=I`;
-
-//console.log(pastWeatherUrl2);
-
-//put in button to limit api calls
-document.getElementById('apiForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form submission
+citySelect.addEventListener('change', function() {
+  selectedCity = citySelect.value;  // Update selectedCity when dropdown changes
+  console.log(`Selected city: ${selectedCity}`);
+  let pastWeatherUrl2 = `https://api.weatherbit.io/v2.0/history/daily?key=60a45320427d4321804f21050ab89b72&city=${selectedCity}&start_date=${startDate}&end_date=${endDate}&units=I`;
   d3.json(pastWeatherUrl2).then(function(earthquakeData) {
     createFeatures(earthquakeData);
-  });
+});
+// if (selectedCity == "Chicago, IL"){
+//   lat = 41.875;
+//   lon = -87.625;
+// }else if (selectedCity == "Denton, TX"){
+//   lat = 40.7128;
+//   lon = -74.0060;
+// }else if (selectedCity == "San Antonio, TX"){
+//   lat = 29.4242;
+//   lon = -98.4936;
+// }
+// lat = 41.875;
+// lon = -87.625;
+
+//put api key in config file
+//const pastWeatherUrl2 = `https://api.weatherbit.io/v2.0/history/daily?key=60a45320427d4321804f21050ab89b72&lat=${lat}&lon=${lon}&start_date=${startDate}&end_date=${endDate}&units=I`;
+console.log(pastWeatherUrl2);
+
 });
 
 //copy paste function to view3 section then in the index.html place this: <div id="chartContainer" class="chart-container"></div>
