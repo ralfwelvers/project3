@@ -40,14 +40,13 @@ const pastWeatherUrl2 = `https://api.weatherbit.io/v2.0/history/daily?key=60a453
 
 //console.log(pastWeatherUrl2);
 
-//Uncomment 44-45 when ready, this calls api automatically and hits the limit quickly
-//d3.json(pastWeatherUrl2).then(function(earthquakeData) {
-//   createFeatures(earthquakeData);
-// });
-// document.getElementById('apiForm').addEventListener('submit', function(event) {
-//   event.preventDefault(); // Prevent form submission
-  
-// });
+//put in button to limit api calls
+document.getElementById('apiForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+  d3.json(pastWeatherUrl2).then(function(earthquakeData) {
+    createFeatures(earthquakeData);
+  });
+});
 
 //copy paste function to view3 section then in the index.html place this: <div id="chartContainer" class="chart-container"></div>
 
