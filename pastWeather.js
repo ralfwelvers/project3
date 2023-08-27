@@ -18,12 +18,14 @@ if (selectedCity == "Chicago, IL"){
 const today = new Date();
 const start_date = new Date();
 
-// Set start_date to 14 days before yesterday's date
-start_date.setDate(today.getDate() - 1 - 14);
-
 // Set end_date to yesterday's date
 const end_date = new Date(today);
-end_date.setDate(today.getDate() - 1);
+
+//A substraction by two brings yesterday's voice
+end_date.setDate(today.getDate() - 2);
+
+// Set start_date to 14 days before yesterday's date
+start_date.setDate(end_date.getDate()-14);
 
 let startDate = start_date.toISOString().split('T')[0];
 let endDate = end_date.toISOString().split('T')[0];
