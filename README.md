@@ -11,7 +11,7 @@
 * OpenWeather API: https://openweathermap.org/
 * OpenMeteo API: https://open-meteo.com/
 * Waqi API: https://waqi.info/
-* Weather Bit Api: https://www.weatherbit.io/
+* Weather Bit API: https://www.weatherbit.io/
 * City names and geolocations from https://simplemaps.com/data/us-cities
 
 ## Premise:
