@@ -11,6 +11,7 @@
 * OpenWeather API: https://openweathermap.org/
 * OpenMeteo API: https://open-meteo.com/
 * Waqi API: https://waqi.info/
+* Weather Bit Api: https://www.weatherbit.io/
 * City names and geolocations from https://simplemaps.com/data/us-cities
 
 ## Premise:
@@ -19,7 +20,7 @@
 * Weather views will be shown:
   - Current Weather - Jiahui: https://openweathermap.org/current
   - Forecasted Weather - Rajan: https://open-meteo.com/
-  - Past Weather - Saber: https://open-meteo.com/
+  - Past Weather - Saber: https://www.weatherbit.io/
   - Sunrise, Sunset, Current Air Quality - Ralf: https://openweathermap.org/, https://waqi.info/
 
 Here are descriptions for all the files:
