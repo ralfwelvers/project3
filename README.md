@@ -25,6 +25,8 @@
 
 Here are descriptions for all the files:
 
+project 3 slide deck.pdf: This is the slide deck presented August 28, 2023
+
 app.py: This is the API that provides the cities for the dropdown. If you want to try everything, you’ll need to run this first. Right-click on the file and select “Run Python File in Terminal.”
 
 index.html: This is the main page.
